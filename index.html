@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OSTP Administration</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="assets/js/bo.js"></script>
+    <link href="assets/css/bo.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- MODALSSTART -->
+    <!-- dialog delete start -->
+    <div class="modal fade" id="dialogDelete" tabindex="-1" aria-labelledby="dialogDelete" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <p class="copy-large mt-5 mb-4">Are you sure you want to remove this item?</p>
+                </div>
+                <div class="modal-footer justify-content-center mt-0">
+                    <button type="button" class="btn btn-secondary cancel_js" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary confirm_js">Yes, remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- dialog delete end -->
+    <!-- dialog cancel changes start -->
+    <div class="modal fade" id="cancelChanges" tabindex="-1" aria-labelledby="cancelChanges" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <p class="copy-large mt-5 mb-4">Are you sure you want to discard all changes?</p>
+                </div>
+                <div class="modal-footer justify-content-center mt-0">
+                    <button type="button" class="btn btn-secondary cancel_js" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary confirm_js">Yes, discard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- dialog cancel changes end -->
+    <!-- select agreement start -->
+    <div class="modal fade" id="changeAgreement" tabindex="-1" aria-labelledby="changeAgreement" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Select Agreement</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> ... </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- select agreement end -->
+    <!-- MODALS END -->
+    <!-- TOAST START -->
+    <div class="toast-container position-fixed top-0 end-0 p-4">
+        <div id="savedToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex justify-content-between align-items-center px-4 pt-4">
+                <p class="m-0 text-brown">message</p>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body p-4"> Saved Sucessfully. </div>
+        </div>
+    </div>
+    <!-- TOAST END -->
+    <div class="container">
+        <nav>
+            <div class="d-flex align-items-start justify-content-between">
+                <div class="logo">
+                    <img src="assets/img/stafftravel-logo.png" alt="Swiss">
+                    <!-- <p class="mt-2 m-0">OSTP&nbsp;Administration</p> -->
+                </div>
+                <div id="nav-close" class="d-block d-xl-none">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0)" class="active">Agreements</a>
+                </li>
+                <li class="sub-nav">
+                    <button class="sub-nav-button">
+                        <p class="w-100">Responses</p>
+                        <span class="more_js material-symbols-outlined">expand_more</span>
+                        <span class="less_js material-symbols-outlined" style="display: none;">expand_less</span>
+                    </button>
+                    <ul style="display: none;">
+                        <li><a href="pages/401.html">Code 401</a></li>
+                        <li><a href="pages/404.html">Code 404</a></li>
+                        <li><a href="pages/500.html">Code 500</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="codes.html">Codes</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main">
+            <div class="head mb-5">
+                <div class="head-nav">
+                    <div class="top-bar px-1 px-sm-3">
+                        <div id="nav-open">
+                            <span class="material-symbols-outlined">drag_handle</span>
+                        </div>
+                        <div id="nav-user" class="d-flex align-items-center" role="button">
+                            <h5 class="initials m-0 mx-1">JD</h5>
+                            <div class="avatar order-1">
+                                <img src="assets/img/user.jpg" alt="user">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="head-content bg-white border-bottom border-secondary-subtle pb-3">
+                    <div class="row flex-row justify-content-center pt-3">
+                        <div class="col-10 col-md-7">
+                            <div class="search-block w-100">
+                                <div class="search-input">
+                                    <span class="loupe-icon material-symbols-outlined">search</span>
+                                    <input id="filter-items" autocomplete="off" type="text" class="form-control" placeholder="Search by code, name or homeland">
+                                    <button class="btn-remove clear"><span class="material-symbols-outlined mt-1">close</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content px-1 px-sm-3">
+                <div class="spinner">
+                    <span class="loader"></span>
+                </div>
+                <div id="agreement-cards" class="row g-3" style="display: none;">
+                    <div class="col-12 d-flex justify-content-between align-items-center mb-2">
+                        <h3 class="d-flex align-items-center m-0"><span class="material-symbols-outlined text-red me-2">description</span>Agreements</h3>
+                        <span class="d-flex align-items-center nav-link" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#newAgreement"><span class="material-symbols-outlined me-1">add</span>New Agreement</span>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                        <h3 class="airline-code m-0">KL</h3>
+                                        <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                    </span>
+                                    <img class="air-logo" src="assets/img/KLM_logo.svg" alt="KLM" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">KLM</h3>
+                                    <small>Netherlands</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">01</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.03.2023 - 01.09.2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                        <h3 class="airline-code m-0">EW</h3>
+                                        <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                    </span>
+                                    <img class="air-logo" src="assets/img/eurowings_logo.svg" alt="Eurowings" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Eurowings</h3>
+                                    <small>Germany</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">02</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.03.2018 - 01.09.2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                        <h3 class="airline-code m-0">LH</h3>
+                                        <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                    </span>
+                                    <img class="air-logo" src="assets/img/lufthansa_logo.svg" alt="Lufthansa" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Lufthansa</h3>
+                                    <small>Germany</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">01</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2008 - 01.01.2058</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                        <h3 class="airline-code m-0">CD</h3>
+                                        <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                    </span>
+                                    <img class="air-logo" src="assets/img/corendon_logo.svg" alt="Lufthansa" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Corendon Dutch Airlines</h3>
+                                    <small>Netherlands</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">01</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2011 - 01.01.2031</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">AA</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/american_logo.svg" alt="American Airlines" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">American Airlines</h3>
+                                    <small>United States</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">03</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2014 - 01.01.2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">OS</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/austrian_logo.svg" alt="Austrian Airlines" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Austrian Airlines</h3>
+                                    <small>Austria</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">01</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2024 - 01.01.2034</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">AZ</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/ITA_logo.svg" alt="ITA Airways" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">ITA Airways</h3>
+                                    <small>Italy</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">01</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2019 - 01.01.2029</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">BA</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/British_logo.svg" alt="British Airways" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">British Airways</h3>
+                                    <small>United Kingdom</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">02</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2002 - 01.01.2030</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">CY</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/Cyprus_logo.svg" alt="Cyprus Airways" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Cyprus Airways</h3>
+                                    <small>Cyprus</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">01</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2023 - 01.01.2035</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">AF</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/Air_France_logo.svg" alt="Air France" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Air France</h3>
+                                    <small>France</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">04</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2011 - 01.01.2040</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">JP</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/adria_logo.svg" alt="Adria Airways" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Adria Airways</h3>
+                                    <small>Slovenia</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">01</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2022 - 01.01.2027</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">SK</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/SAS_logo.svg" alt="Scandinavian Airlines" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Scandinavian Airlines</h3>
+                                    <small>Sweden</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">07</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2004 - 01.01.2028</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">TP</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/TAP_logo.svg" alt="Air Portugal" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">TAP Air</h3>
+                                    <small>Portugal</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">04</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2008 - 01.01.2028</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-4 a-card">
+                        <div class="block agreementCard_js" role="button">
+                            <a href="agreement.html"></a>
+                            <div class="card-head">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="d-flex align-items-center">
+                                    <h3 class="airline-code m-0">VS</h3>
+                                    <span class="plane-icon material-symbols-outlined ms-1 text-red">flight</span>
+                                </span>
+                                    <img class="air-logo" src="assets/img/VirginAtlantic_logo.svg" alt="Virgin Atlantic" />
+                                </div>
+                                <div class="airline-data mb-3">
+                                    <h3 class="airline-name m-0">Virgin Atlantic</h3>
+                                    <small>United Kingdom</small>
+                                </div>
+                            </div>
+                            <div class="card-foot">
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">history</span>
+                                    <span class="small">04</span>
+                                </div>
+                                <div class="d-flex justify-content-start my-1">
+                                    <span class="material-symbols-outlined fs-5 me-2 text-brown">calendar_today</span>
+                                    <span class="small">01.01.2008 - 01.01.2028</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="no-results-message">
+                        <h3 class="mb-2 text-brown">No results match your search criteria</h3>
+                        <p class="text-brown m-0">Try modifying your search</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="px-1 px-sm-3">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-5">
+                        <a href="javascript:void(0)" class="top">
+                            <span class="material-symbols-outlined">arrow_upward</span>
+                        </a>
+                    </div>
+                <div class="row signoff">
+                    <div class="col-12 mb-2 col-md-6 mb-md-0 copy-info">
+                        <img src="assets/img/swiss-logo.svg" alt="Swiss">
+                        <small class=" pt-1">© Swiss International Air Lines</small>
+                    </div>
+                    <div class="col-12 col-md-6 mb-md-0 d-flex justify-content-md-end">
+                        <img class="sa-logo" src="assets/img/star-alliance.svg" alt="a Star Alliance member">
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

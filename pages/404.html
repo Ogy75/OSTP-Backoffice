@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: white;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #101010;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            margin: 0 auto;
+            box-sizing: border-box;
+            align-items: center;
+            max-width: 1024px;
+            min-height: 100vh;
+        }
+
+        .anim {
+            width: 200px;
+            height: 206px;
+            min-width: 200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 1rem 5rem;
+            position: relative;
+        }
+
+        @keyframes slide-in-out-l {
+            0% {
+                left: 0;
+            }
+            5%{
+                left:0;
+            }
+            20% {
+                left: -200px;
+            }
+            60% {
+                left: -200px;
+            }
+            90% {
+                left:0;
+            }
+        }
+
+        @keyframes slide-in-out-r {
+            0% {
+                right: 0;
+            }
+            5%{
+                right:0;
+            }
+            20% {
+                right: -200px;
+            }
+            60% {
+                right: -200px;
+            }
+            90% {
+                right:0;
+            }
+        }
+
+        .void{
+            position: absolute;
+            top:20px;
+            width: 100%;
+            height: 186px;
+            z-index: 0;
+        }
+
+        .sensor{
+            position: absolute;
+            top:0;
+            width: 50px;
+            left:50%;
+            transform: translate(-50%);
+        }
+        .door-l, .door-r {
+            display: block;
+            min-width: 100px;
+            z-index: 1;
+        }
+        .door-l{
+            position: absolute;
+            top:20px;
+            left:0;
+            animation-name: slide-in-out-l;
+            animation-duration: 8s;
+            animation-delay: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        .door-r{
+            position: absolute;
+            top:20px;
+            right:0;
+            animation-name: slide-in-out-r;
+            animation-duration: 8s;
+            animation-delay: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        .door-l img {
+            max-width:100px;
+        }
+        .door-r img {
+            max-width:100px;
+        }
+
+        .door-l p {
+            margin: .75rem 0 0 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 1rem 5rem;
+            border-left: 1px solid #ccc;
+        }
+
+        .wrapper .logo {
+            width: 200px;
+            margin-bottom:20px;
+        }
+
+        .wrapper small {
+            display: block;
+            margin-top: .5rem;
+            margin-bottom: 2rem;
+            color: #6f6660;
+        }
+
+        p,
+        h1,
+        h2 {
+            margin: 0;
+        }
+
+        h2 {
+            font-weight: 400;
+            font-size: 1.3rem;
+            margin-top: .5rem;
+        }
+
+        p {
+            margin-top: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            color: #6f6660;
+        }
+
+        button {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            font-family: 'SwissText Bold', Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            height: 50px;
+            justify-content: center;
+            letter-spacing: .6px;
+            letter-spacing: .025rem;
+            padding: .5rem 2rem;
+            text-align: center;
+            text-transform: none;
+            transition: all .3s ease-out;
+            -webkit-user-select: none;
+            user-select: none;
+            vertical-align: middle;
+            white-space: nowrap;
+            border-radius: 4px;
+            background-color: #bb1914;
+            border: 1px solid #bb1914;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #900;
+            border: 1px solid #900;
+            text-decoration: none;
+        }
+
+        a {
+            display: block;
+            font-size: 1rem;
+            text-decoration: none;
+            color: #6f6660;
+            padding: .5rem 0;
+        }
+
+        a:hover {
+            color: #554e49;
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .anim {
+                margin: 2.5rem;
+            }
+
+            .container {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .wrapper {
+                align-items: center;
+                border-left: 0;
+                padding: 1rem;
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="anim">
+            <img class="sensor" src="../assets/img/ico_sensor.svg" alt="sensor"/>
+            <div class="door-l">
+                <img src="../assets/img/ico_door.svg" alt="door">
+            </div>
+            <div class="door-r">
+                <img src="../assets/img/ico_door-r.svg" alt="door">
+            </div>
+            <div class="void">
+                <img src="../assets/img/void-01.svg" alt="nothing"/>
+            </div>
+        </div>
+        <div class="wrapper">
+            <img class="logo" src="../assets/img/stafftravel-logo.png" alt="swiss" />
+            <h1>Page not Found</h1>
+            <h2 class="error">Error code 404</h2>
+            <p>The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p>
+            <button class="button" onclick="history.back()">Go Back</button>
+        </div>
+    </div>
+</body>
+
+</html>

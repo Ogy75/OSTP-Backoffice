@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>401 - Unauthorized</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: white;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #101010;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            margin: 0 auto;
+            box-sizing: border-box;
+            align-items: center;
+            max-width: 1024px;
+            min-height: 100vh;
+        }
+
+        .anim {
+            margin: 1rem 5rem;
+            position: relative;
+        }
+
+        .scan {
+            width: 90%;
+            position: absolute;
+            bottom: 32%;
+            left: 5%;
+            animation-name: scanner;
+            animation-duration: .8s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes scanner {
+            0% {
+                bottom: 32%;
+                ;
+            }
+
+            50% {
+                bottom: 8%;
+            }
+        }
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            min-width: 180px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .icon img {
+            max-width: 600px;
+        }
+
+        .icon p {
+            margin: .75rem 0 0 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 1rem 5rem;
+            border-left: 1px solid #ccc;
+        }
+
+        .wrapper .logo {
+            width: 200px;
+            margin-bottom:20px;
+        }
+
+        .wrapper small {
+            display: block;
+            margin-top: .5rem;
+            margin-bottom: 2rem;
+            color: #6f6660;
+        }
+
+        p,
+        h1,
+        h2 {
+            margin: 0;
+        }
+
+        h2 {
+            font-weight: 400;
+            font-size: 1.3rem;
+            margin-top: .5rem;
+        }
+
+        p {
+            margin-top: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            color: #6f6660;
+        }
+
+        button {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            font-family: 'SwissText Bold', Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            height: 50px;
+            justify-content: center;
+            letter-spacing: .6px;
+            letter-spacing: .025rem;
+            padding: .5rem 2rem;
+            text-align: center;
+            text-transform: none;
+            transition: all .3s ease-out;
+            -webkit-user-select: none;
+            user-select: none;
+            vertical-align: middle;
+            white-space: nowrap;
+            border-radius: 4px;
+            background-color: #bb1914;
+            border: 1px solid #bb1914;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #900;
+            border: 1px solid #900;
+            text-decoration: none;
+        }
+
+        a {
+            display: block;
+            font-size: 1rem;
+            text-decoration: none;
+            color: #6f6660;
+            padding: .5rem 0;
+        }
+
+        a:hover {
+            color: #554e49;
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .anim {
+                margin: 2.5rem;
+            }
+
+            .container {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .wrapper {
+                align-items: center;
+                border-left: 0;
+                padding: 1rem;
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="anim">
+            <img class="scan" src="../assets/img/ico_scan.svg" alt="code" />
+            <div class="icon">
+                <img src="../assets/img/ico_id.svg" alt="ID">
+            </div>
+        </div>
+        <div class="wrapper">
+            <img class="logo" src="../assets/img/stafftravel-logo.png" alt="swiss" />
+            <!-- <small>OSTP Administration</small> -->
+            <h1>Missing permissions</h1>
+            <h2 class="error">Error code 401</h2>
+            <p>You do not have a permission to access this page.</p>
+            <button class="button" onclick="history.back()">Go Back</button>
+        </div>
+    </div>
+</body>
+
+</html>

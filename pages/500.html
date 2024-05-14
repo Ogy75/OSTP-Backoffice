@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>500 - Server Error</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: white;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #101010;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            margin: 0 auto;
+            box-sizing: border-box;
+            align-items: center;
+            max-width: 1024px;
+            min-height: 100vh;
+        }
+
+        .anim {
+            margin: 1rem 5rem;
+            position: relative;
+        }
+
+        .terminal{
+            position: absolute;
+            top:20%;
+            left:10%;
+            display: block;
+            width:80%;
+            height:70%;
+            /* border: 1px solid black; */
+        }
+        .line-l-1{
+            width:100%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+            animation: line-l-1;
+        }
+        .line-l-2{
+            width:90%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+        }
+        .line-l-3{
+            width:95%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+        }
+        .line-s-1{
+            width:33%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+        }
+        .line-s-2{
+            width:25%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+        }
+        .line-s-3{
+            width:38%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+        }
+        .line-m-1{
+            width:75%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+        }
+        .line-m-2{
+            width:85%;
+            height: 8px;
+            background-color: #bbb7b4;
+            margin-bottom:6px;
+        }
+        .cursor{
+            width:7px;
+            height:12px;
+            background-color: #c00;
+            animation-name: cursor;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes cursor {
+            0% {
+                opacity: 0;
+            }
+            49%{
+                opacity:0;
+            }
+            50% {
+                opacity: 1;
+            }
+            99%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+
+        .window {
+            display: flex;
+            flex-direction: column;
+            min-width: 180px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .window img {
+            max-width: 600px;
+        }
+
+        .window p {
+            margin: .75rem 0 0 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 1rem 5rem;
+            border-left: 1px solid #ccc;
+        }
+
+        .wrapper .logo {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .wrapper small {
+            display: block;
+            margin-top: .5rem;
+            margin-bottom: 2rem;
+            color: #6f6660;
+        }
+
+        p,
+        h1,
+        h2 {
+            margin: 0;
+        }
+
+        h2 {
+            font-weight: 400;
+            font-size: 1.3rem;
+            margin-top: .5rem;
+        }
+
+        p {
+            margin-top: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            color: #6f6660;
+        }
+
+        button {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            font-family: 'SwissText Bold', Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            height: 50px;
+            justify-content: center;
+            letter-spacing: .6px;
+            letter-spacing: .025rem;
+            padding: .5rem 2rem;
+            text-align: center;
+            text-transform: none;
+            transition: all .3s ease-out;
+            -webkit-user-select: none;
+            user-select: none;
+            vertical-align: middle;
+            white-space: nowrap;
+            border-radius: 4px;
+            background-color: #bb1914;
+            border: 1px solid #bb1914;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #900;
+            border: 1px solid #900;
+            text-decoration: none;
+        }
+
+        a {
+            display: block;
+            font-size: 1rem;
+            text-decoration: none;
+            color: #6f6660;
+            padding: .5rem 0;
+        }
+
+        a:hover {
+            color: #554e49;
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .anim {
+                margin: 2.5rem;
+            }
+
+            .container {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .wrapper {
+                align-items: center;
+                border-left: 0;
+                padding: 1rem;
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="anim">
+            <div class="terminal">
+                <div class="line-l-1"></div>
+                <div class="line-s-1"></div>
+                <div class="line-m-1"></div>
+                <div class="line-l-2"></div>
+                <div class="line-s-2"></div>
+                <div class="line-m-2"></div>
+                <div class="line-l-3"></div>
+                <div class="line-s-3"></div>
+                <div class="cursor"></div>
+            </div>
+            <div class="window">
+                <img src="../assets/img/ico_server.svg" alt="ID">
+            </div>
+        </div>
+        <div class="wrapper">
+            <img class="logo" src="../assets/img/stafftravel-logo.png" alt="swiss" />
+            <h1>Internal Server error</h1>
+            <h2 class="error">Error code 500</h2>
+            <p>Sorry, something went wrong. Our development team has been notified and they are working on it. Please try again later.</p>
+            <button class="button" onClick="window.location.href=window.location.href">Refresh</button>
+        </div>
+    </div>
+</body>
+
+</html>
