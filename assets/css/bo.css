@@ -1197,7 +1197,16 @@ footer .signoff .sa-logo {
 
 .pagination .page-item {
   font-family: "SwissText Bold", Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
+}
+.pagination .page-item .spacer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  background: transparent;
+  width: 20px;
+  font-size: 1rem;
+  color: #929292;
 }
 .pagination .page-item.active .page-link {
   background-color: #bb1914;
@@ -1208,27 +1217,21 @@ footer .signoff .sa-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  margin: 3px;
+  margin: 2px;
   color: #101010;
+  font-size: 0.85rem;
+  letter-spacing: -0.4px;
+  border: none;
+  background: #f0f0f0;
+  text-decoration: none;
 }
 .pagination .page-item .page-link:focus {
-  outline: 1px #979797 solid;
-  outline-offset: 2px;
-  border: 1px solid transparent;
+  outline: 0;
+  border: 0;
   box-shadow: none;
-}
-.pagination .page-item .spacer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: 42px;
-  border: none;
-  border-radius: 50%;
-  margin-inline: 3px;
 }
 
 @media only screen and (max-width: 1680px) {
@@ -1334,5 +1337,15 @@ footer .signoff .sa-logo {
 @media only screen and (max-width: 576px) {
   nav #nav-close {
     padding: 18px 16px 0 0;
+  }
+  .pagination .page-item .spacer {
+    height: 36px;
+    font-size: 1rem;
+  }
+  .pagination .page-item .page-link {
+    width: 36px;
+    height: 36px;
+    margin: 3px;
+    font-size: 0.98rem;
   }
 }/*# sourceMappingURL=bo.css.map */

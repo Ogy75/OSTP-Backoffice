@@ -1515,7 +1515,16 @@ footer {
 .pagination {
     .page-item {
         font-family: 'SwissText Bold', Arial, Helvetica, sans-serif;
-        font-size: 0.9rem;
+        .spacer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            background:transparent;
+            width:20px;
+            font-size: 1rem;
+            color: $input-outline;
+        }
 
         &.active {
             .page-link {
@@ -1529,30 +1538,24 @@ footer {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 42px;
-            height: 42px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            margin: 3px;
+            margin: 2px;
             color: $text;
+            font-size: .85rem;
+            letter-spacing: -.4px;
+            border: none;
+            background: $input-fill;
+            text-decoration: none;
 
             &:focus {
-                outline: 1px darken($input-fill, 35) solid;
-                outline-offset: 2px;
-                border: 1px solid transparent;
+                outline: 0;
+                border: 0;
                 box-shadow: none;
             }
         }
 
-        .spacer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: auto;
-            height: 42px;
-            border: none;
-            border-radius: 50%;
-            margin-inline: 3px;
-        }
     }
 }
 
@@ -1882,5 +1885,22 @@ footer {
             padding: 18px 16px 0 0;
         }
     }
+    //PAGINATION
+.pagination {
+    .page-item {
+        .spacer{
+            height: 36px;
+            font-size: 1rem;
+        }
+
+        .page-link {
+            width: 36px;
+            height: 36px;
+            margin: 3px;
+            font-size: .98rem;
+        }
+
+    }
+}
 
 }
