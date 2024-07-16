@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OSTP Administration</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="assets/js/bo.js"></script>
+    <link href="assets/css/bo.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- MODALSSTART -->
+    <!-- dialog delete start -->
+    <div class="modal fade" id="dialogDelete" tabindex="-1" aria-labelledby="dialogDelete" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <p class="copy-large mt-5 mb-4">Are you sure you want to remove this item?</p>
+                </div>
+                <div class="modal-footer justify-content-center mt-0">
+                    <button type="button" class="btn btn-secondary cancel_js" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary confirm_js">Yes, remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- dialog delete end -->
+    <!-- dialog cancel changes start -->
+    <div class="modal fade" id="cancelChanges" tabindex="-1" aria-labelledby="cancelChanges" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <p class="copy-large mt-5 mb-4">Are you sure you want to discard all changes?</p>
+                </div>
+                <div class="modal-footer justify-content-center mt-0">
+                    <button type="button" class="btn btn-secondary cancel_js" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary confirm_js">Yes, discard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- dialog cancel changes end -->
+    <!-- select agreement start -->
+    <div class="modal fade" id="changeAgreement" tabindex="-1" aria-labelledby="changeAgreement" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Select Agreement</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> ... </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- select agreement end -->
+    <!-- edit city start -->
+    <div class="modal fade" id="editCity" tabindex="-1" aria-labelledby="editCity" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="m-0">Edit City Code</h3>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>City Code ID</label>
+                                <input type="text" class="form-control" value="" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="select-dropdown">
+                                <label>Country Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul class="item-list">
+                                    <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                    <li value="7">item 7</li>
+                                    <li value="8">item 8</li>
+                                    <li value="9">item 9</li>
+                                    <li value="10">item 10</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4  mb-3">
+                            <div class="select-dropdown">
+                                <label>Continent Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul>
+                                    <li value="code 1">code 1</li>
+                                    <li value="item 2">item 2</li>
+                                    <li value="item 3">item 3</li>
+                                    <li value="item 4">item 4</li>
+                                    <li value="item 5">item 5</li>
+                                    <li value="item 6">item 6</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4  mb-3">
+                            <div class="select-dropdown">
+                                <label>State Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                            <label>Metro Code ID</label>
+                            <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                            <label>IATA Region</label>
+                            <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <span class="langTable">
+                        <div class="row border-bottom-dashed py-3">
+                            <div class="col-12 col-md-4 mb-md-0 mb-3">
+                                <div class="select-dropdown">
+                                    <label>Language</label>
+                                    <button>
+                                        <p>English</p>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <ul class="item-list">
+                                        <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                        <li value="1" class="active">English</li>
+                                        <li value="2">item 2</li>
+                                        <li value="3">item 3</li>
+                                        <li value="4">item 4</li>
+                                        <li value="5">item 5</li>
+                                        <li value="6">item 6</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <div class="input-form">
+                                <label>Translation</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="col-12 my-3">
+                        <span class="nav-link addLanguage_js" role="button"><span class="material-symbols-outlined me-1">add</span>Add Language</span>
+                        <!-- <button class="btn btn-secondary addLanguage_js">Add Language</button> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit city end -->
+    <!-- add city start -->
+    <div class="modal fade" id="newCity" tabindex="-1" aria-labelledby="newCity" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="m-0">Add City Code</h3>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>City Code ID</label>
+                                <input type="text" class="form-control" value="" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="select-dropdown">
+                                <label>Country Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul class="item-list">
+                                    <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                    <li value="7">item 7</li>
+                                    <li value="8">item 8</li>
+                                    <li value="9">item 9</li>
+                                    <li value="10">item 10</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4  mb-3">
+                            <div class="select-dropdown">
+                                <label>Continent Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul>
+                                    <li value="code 1">code 1</li>
+                                    <li value="item 2">item 2</li>
+                                    <li value="item 3">item 3</li>
+                                    <li value="item 4">item 4</li>
+                                    <li value="item 5">item 5</li>
+                                    <li value="item 6">item 6</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4  mb-3">
+                            <div class="select-dropdown">
+                                <label>State Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4  mb-3">
+                            <div class="input-form">
+                            <label>Metro Code ID</label>
+                            <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4  mb-3">
+                            <div class="input-form">
+                            <label>IATA Region</label>
+                            <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <span class="langTable">
+                        <div class="row border-bottom-dashed py-3">
+                            <div class="col-12 col-md-4 mb-md-0 mb-3">
+                                <div class="select-dropdown">
+                                    <label>Language</label>
+                                    <button>
+                                        <p>English</p>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <ul class="item-list">
+                                        <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                        <li value="1" class="active">English</li>
+                                        <li value="2">item 2</li>
+                                        <li value="3">item 3</li>
+                                        <li value="4">item 4</li>
+                                        <li value="5">item 5</li>
+                                        <li value="6">item 6</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <div class="input-form">
+                                <label>Translation</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="col-12 my-3">
+                        <span class="nav-link addLanguage_js" role="button"><span class="material-symbols-outlined me-1">add</span>Add Language</span>
+                        <!-- <button class="btn btn-secondary addLanguage_js">Add Language</button> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- add city end -->
+    <!-- edit airport start -->
+    <div class="modal fade" id="editAirport" tabindex="-1" aria-labelledby="editAirport" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="m-0">Edit Airport Code</h3>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>Airport Code ID</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>City Code ID</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="select-dropdown">
+                                <label>Country Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul class="item-list">
+                                    <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                    <li value="7">item 7</li>
+                                    <li value="8">item 8</li>
+                                    <li value="9">item 9</li>
+                                    <li value="10">item 10</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="select-dropdown">
+                                <label>State Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>Latitude (e.g. 48.856613)</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>Longitude (e.g. 2.352222)</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="check">Is Rail Station<input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <span class="langTable">
+                        <div class="row border-bottom-dashed py-3">
+                            <div class="col-12 col-md-4 mb-md-0 mb-3">
+                                <div class="select-dropdown">
+                                    <label>Language</label>
+                                    <button>
+                                        <p>English</p>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <ul class="item-list">
+                                        <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                        <li value="1" class="active">English</li>
+                                        <li value="2">item 2</li>
+                                        <li value="3">item 3</li>
+                                        <li value="4">item 4</li>
+                                        <li value="5">item 5</li>
+                                        <li value="6">item 6</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <div class="input-form">
+                                    <label>Translation</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="col-12 my-3">
+                        <span class="nav-link addLanguage_js" role="button"><span class="material-symbols-outlined me-1">add</span>Add Language</span>
+                        <!-- <button class="btn btn-secondary addLanguage_js">Add Language</button> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit airport end -->
+    <!-- new airport start -->
+    <div class="modal fade" id="newAirport" tabindex="-1" aria-labelledby="newAirport" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="m-0">Add Airport Code</h3>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>Airport Code ID</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>City Code ID</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="select-dropdown">
+                                <label>Country Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul class="item-list">
+                                    <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                    <li value="7">item 7</li>
+                                    <li value="8">item 8</li>
+                                    <li value="9">item 9</li>
+                                    <li value="10">item 10</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="select-dropdown">
+                                <label>State Code ID</label>
+                                <button>
+                                    <p>select</p>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </button>
+                                <ul>
+                                    <li value="1">code 1</li>
+                                    <li value="2">item 2</li>
+                                    <li value="3">item 3</li>
+                                    <li value="4">item 4</li>
+                                    <li value="5">item 5</li>
+                                    <li value="6">item 6</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>Latitude (e.g. 48.856613)</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="input-form">
+                                <label>Longitude (e.g. 2.352222)</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="check">Is Rail Station<input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <span class="langTable">
+                        <div class="row border-bottom-dashed py-3">
+                            <div class="col-12 col-md-4 mb-md-0 mb-3">
+                                <div class="select-dropdown">
+                                    <label>Language</label>
+                                    <button>
+                                        <p>English</p>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <ul class="item-list">
+                                        <div class="form-search"><input type="text" class="form-control" placeholder="find item" /></div>
+                                        <li value="1" class="active">English</li>
+                                        <li value="2">item 2</li>
+                                        <li value="3">item 3</li>
+                                        <li value="4">item 4</li>
+                                        <li value="5">item 5</li>
+                                        <li value="6">item 6</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <div class="input-form">
+                                    <label>Translation</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="col-12 my-3">
+                        <span class="nav-link addLanguage_js" role="button"><span class="material-symbols-outlined me-1">add</span>Add Language</span>
+                        <!-- <button class="btn btn-secondary addLanguage_js">Add Language</button> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- new airport end -->
+    <!-- MODALS END -->
+    <!-- TOAST START -->
+    <div class="toast-container position-fixed top-0 end-0 p-4">
+        <div id="savedToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex justify-content-between align-items-center px-4 pt-4">
+                <p class="m-0 text-brown">message</p>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body p-4"> Saved Sucessfully. </div>
+        </div>
+    </div>
+    <!-- TOAST END -->
+    <div class="container">
+        <nav>
+            <div class="d-flex align-items-start justify-content-between">
+                <div class="logo">
+                    <img src="assets/img/stafftravel-logo.png" alt="Swiss">
+                    <!-- <p class="mt-2 m-0">OSTP&nbsp;Administration</p> -->
+                </div>
+                <div id="nav-close" class="d-block d-xl-none">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0)" class="active">Agreements</a>
+                </li>
+                <li class="sub-nav">
+                    <button class="sub-nav-button">
+                        <p class="w-100">Responses</p>
+                        <span class="more_js material-symbols-outlined">expand_more</span>
+                        <span class="less_js material-symbols-outlined" style="display: none;">expand_less</span>
+                    </button>
+                    <ul style="display: none;">
+                        <li><a href="pages/401.html">Code 401</a></li>
+                        <li><a href="pages/404.html">Code 404</a></li>
+                        <li><a href="pages/500.html">Code 500</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="codes.html">Codes</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main">
+            <div class="head mb-5">
+                <div class="head-nav">
+                    <div class="top-bar px-1 px-sm-3">
+                        <div id="nav-open">
+                            <span class="material-symbols-outlined">drag_handle</span>
+                        </div>
+                        <div id="nav-user" class="d-flex align-items-center" role="button">
+                            <h5 class="initials m-0 mx-1">JD</h5>
+                            <div class="avatar order-1">
+                                <img src="assets/img/user.jpg" alt="user">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="head-content bg-white border-bottom border-secondary-subtle pb-3">
+                    <div class="row flex-row justify-content-center pt-3">
+                        <div class="col-10 col-md-7">
+                            <div class="search-block w-100">
+                                <div class="search-input">
+                                    <span class="loupe-icon material-symbols-outlined">search</span>
+                                    <input id="filter-items" autocomplete="off" type="text" class="form-control" placeholder="Search by code or airline name">
+                                    <button class="btn-remove clear"><span class="material-symbols-outlined mt-1">close</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="content px-1 px-sm-3">
+                <div class="spinner">
+                    <span class="loader"></span>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-12 col-md-6 d-flex align-items-center justify-content-between mb-4">
+                            <div class="btn-group" role="group">
+                                <button type="button" data-tab="city-codes" class="btn btn-tab active">City Codes</button>
+                                <button type="button" data-tab="airport-codes" class="btn btn-tab">Airport Codes</button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 d-flex justify-content-md-end justify-content-start mb-4">
+                            <span id="city-code-new" class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#newCity" class="btn btn-primary"><span class="material-symbols-outlined me-1">add</span>New City Code</span>
+                            <span id="airport-code-new" class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#newAirport" style="display: none;"><span class="material-symbols-outlined me-1">add</span>New Airport Code</span>
+                        </div>
+                    </div>
+                    <div class="row flex-row position-sticky justify-content-center top-0 border-bottom border-secondary-subtle border-top bg-white z-front">
+                        <div class="col-10 col-md-7">
+                            <div class="search-block p-3">
+                                <div class="search-input">
+                                    <span class="loupe-icon material-symbols-outlined">search</span>
+                                    <input id="filter-codes" autocomplete="off" type="text" class="form-control" placeholder="Find by City code" />
+                                    <input id="filter-airports" autocomplete="off" type="text" class="form-control" placeholder="Find by Airport code" style="display: none;" />
+                                    <button class="btn-remove clear"><span class="material-symbols-outlined mt-1">close</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="spinner" style="display: none;">
+                            <span class="loader"></span>
+                        </div>
+                    </div>
+                    <div id="city-codes" class="row tab-content mt-5" style="display: none;">
+                        <div class="col-12">
+                            <div class="table-wrapper">
+                                <table class="city-codes table table-responsive table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>City Code ID</th>
+                                            <th>Translation</th>
+                                            <th>Country Code ID</th>
+                                            <th>Continent Code ID</th>
+                                            <th>State Code ID</th>
+                                            <th>Metro Code ID</th>
+                                            <th>IATA Region</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FDF</td>
+                                            <td>Fort De France</td>
+                                            <td>MQ</td>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>130</td>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FFT</td>
+                                            <td>Frankfort</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>KY</td>
+                                            <td></td>
+                                            <td>110</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FKL</td>
+                                            <td>Franklin</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>PA</td>
+                                            <td></td>
+                                            <td>111</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FRA</td>
+                                            <td>Frankfurt</td>
+                                            <td>DE</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td>FRA</td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>LYN</td>
+                                            <td>Lyon France</td>
+                                            <td>FR</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FDF</td>
+                                            <td>Fort De France</td>
+                                            <td>MQ</td>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>130</td>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FFT</td>
+                                            <td>Frankfort</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>KY</td>
+                                            <td></td>
+                                            <td>110</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FKL</td>
+                                            <td>Franklin</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>PA</td>
+                                            <td></td>
+                                            <td>111</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FRA</td>
+                                            <td>Frankfurt</td>
+                                            <td>DE</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td>FRA</td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>LYN</td>
+                                            <td>Lyon France</td>
+                                            <td>FR</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FDF</td>
+                                            <td>Fort De France</td>
+                                            <td>MQ</td>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>130</td>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FFT</td>
+                                            <td>Frankfort</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>KY</td>
+                                            <td></td>
+                                            <td>110</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FKL</td>
+                                            <td>Franklin</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>PA</td>
+                                            <td></td>
+                                            <td>111</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FRA</td>
+                                            <td>Frankfurt</td>
+                                            <td>DE</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td>FRA</td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>LYN</td>
+                                            <td>Lyon France</td>
+                                            <td>FR</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FDF</td>
+                                            <td>Fort De France</td>
+                                            <td>MQ</td>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>130</td>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FFT</td>
+                                            <td>Frankfort</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>KY</td>
+                                            <td></td>
+                                            <td>110</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FKL</td>
+                                            <td>Franklin</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>PA</td>
+                                            <td></td>
+                                            <td>111</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FRA</td>
+                                            <td>Frankfurt</td>
+                                            <td>DE</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td>FRA</td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>LYN</td>
+                                            <td>Lyon France</td>
+                                            <td>FR</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FDF</td>
+                                            <td>Fort De France</td>
+                                            <td>MQ</td>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>130</td>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FFT</td>
+                                            <td>Frankfort</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>KY</td>
+                                            <td></td>
+                                            <td>110</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FKL</td>
+                                            <td>Franklin</td>
+                                            <td>US</td>
+                                            <td>NA</td>
+                                            <td>PA</td>
+                                            <td></td>
+                                            <td>111</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>FRA</td>
+                                            <td>Frankfurt</td>
+                                            <td>DE</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td>FRA</td>
+                                            <td>210</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editCity">
+                                            <td>LYN</td>
+                                            <td>Lyon France</td>
+                                            <td>FR</td>
+                                            <td>EU</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>210</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="airport-codes" class="row tab-content mt-5" style="display: none;">
+                        <div class="col-12">
+                            <div class="table-wrapper">
+                                <table class="airport-codes table table-responsive table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Airport Code</th>
+                                            <th>Translation</th>
+                                            <th>City Code ID</th>
+                                            <th>Country Code ID</th>
+                                            <th>Is Rail Station</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>BEG</td>
+                                            <td>Belgrade Beograd Arpt</td>
+                                            <td>BEG</td>
+                                            <td>RS</td>
+                                            <td>false</td>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>BPM</td>
+                                            <td>Begumpet</td>
+                                            <td>HYD</td>
+                                            <td>IN</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>HYD</td>
+                                            <td>Begumpet Arpt</td>
+                                            <td>HYD</td>
+                                            <td>IN</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>NBC</td>
+                                            <td>Begishevo</td>
+                                            <td>NBC</td>
+                                            <td>RU</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>KMG</td>
+                                            <td>Kunming</td>
+                                            <td>KMG</td>
+                                            <td>CN</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>MIA</td>
+                                            <td>Miami</td>
+                                            <td>MIA</td>
+                                            <td>US</td>
+                                            <td>true</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>ITM</td>
+                                            <td>Osaka</td>
+                                            <td>OS</td>
+                                            <td>JP</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>HAM</td>
+                                            <td>Hamburg</td>
+                                            <td>HB</td>
+                                            <td>DE</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>HAM</td>
+                                            <td>Hamburg</td>
+                                            <td>HB</td>
+                                            <td>DE</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>FAO</td>
+                                            <td>Faro</td>
+                                            <td>FA</td>
+                                            <td>PT</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>DRS</td>
+                                            <td>Dresden</td>
+                                            <td>DR</td>
+                                            <td>DE</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>DSA</td>
+                                            <td>Sheffield</td>
+                                            <td>SH</td>
+                                            <td>UK</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>DTW</td>
+                                            <td>Detroit</td>
+                                            <td>DT</td>
+                                            <td>US</td>
+                                            <td>true</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>CXR</td>
+                                            <td>Khanh Hoa</td>
+                                            <td>KK</td>
+                                            <td>VT</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>CPV</td>
+                                            <td>Cqampina Grande</td>
+                                            <td>CG</td>
+                                            <td>BR</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>CPV</td>
+                                            <td>Cqampina Grande</td>
+                                            <td>CG</td>
+                                            <td>BR</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>CGP</td>
+                                            <td>Chittagong</td>
+                                            <td>CGP</td>
+                                            <td>BA</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>CGP</td>
+                                            <td>Chittagong</td>
+                                            <td>CGP</td>
+                                            <td>BA</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>BMI</td>
+                                            <td>Illinois</td>
+                                            <td>IL</td>
+                                            <td>US</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>SNN</td>
+                                            <td>Shannon</td>
+                                            <td>SNN</td>
+                                            <td>IR</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>SNN</td>
+                                            <td>Shannon</td>
+                                            <td>SNN</td>
+                                            <td>IR</td>
+                                            <td>false</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>YWG</td>
+                                            <td>Winnipeg</td>
+                                            <td>YWG</td>
+                                            <td>CA</td>
+                                            <td>true</td>
+                                        </tr>
+                                        <tr data-bs-toggle="modal" data-bs-target="#editAirport">
+                                            <td>ZAZ</td>
+                                            <td>Zaragoza</td>
+                                            <td>ZAZ</td>
+                                            <td>ES</td>
+                                            <td>false</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="no-results-message" style="display: none;">
+                        <h3 class="mb-2 text-brown">No results match your search criteria</h3>
+                        <p class="text-brown m-0">Try modifying your search</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-flex my-5 py-2 px-1 px-sm-3 position-sticky bottom-0 bg-white border-top border-secondary-subtle">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <a href="javascript:void(0)" class="top">
+                        <span class="material-symbols-outlined">arrow_upward</span>
+                    </a>
+                    <div>
+                        <ul class="pagination m-0">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&lsaquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><span class="spacer material-symbols-outlined" href="#">more_horiz</span></li>
+                            <li class="page-item active"><a class="page-link" href="#">12</a></li>
+                            <li class="page-item"><span class="spacer material-symbols-outlined" href="#">more_horiz</span></li>
+                            <li class="page-item"><a class="page-link" href="#">29</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&rsaquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <span class="d-flex gap-2">
+                        <button class="btn btn-tab cancelChanges">Close</button>
+                        <button type="button" class="btn btn-primary saveConfirm">Save</button>
+                    </span> -->
+                </div>
+            </div>
+            <footer class="px-1 px-sm-3">
+                <!-- <div class="d-flex justify-content-between align-items-start gap-3 mb-5">
+                        <a href="javascript:void(0)" class="top">
+                            <span class="material-symbols-outlined">arrow_upward</span>
+                        </a>
+                    </div> -->
+                <div class="row signoff">
+                    <div class="col-12 mb-2 col-md-6 mb-md-0 copy-info">
+                        <img src="assets/img/swiss-logo.svg" alt="Swiss">
+                        <small class=" pt-1">© Swiss International Air Lines</small>
+                    </div>
+                    <div class="col-12 col-md-6 mb-md-0 d-flex justify-content-md-end">
+                        <img class="sa-logo" src="assets/img/star-alliance.svg" alt="a Star Alliance member">
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

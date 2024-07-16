@@ -133,6 +133,7 @@ nav {
 
 .content {
     min-width: 200px;
+    min-height: 78vh;
 }
 
 
@@ -748,7 +749,7 @@ label {
         font-size: 1rem;
         transition: none;
         line-height: 1;
-        padding: 0rem .8rem 0rem .5rem;
+        padding: 0rem .8rem;
         height: $height - 8px;
         min-width: 30px;
         border-radius: $height - 8px / 2 !important;
@@ -1191,10 +1192,13 @@ textarea {
     thead {
         tr {
             th {
-                vertical-align: middle;
-                line-height: 1.1;
+                vertical-align: bottom;
+                line-height: 1.2;
                 font-weight: normal;
-                white-space: nowrap;
+                //white-space: nowrap;
+                font-family: 'SwissText Regular', Arial, Helvetica, sans-serif;
+                font-size: .9rem;
+                border: 0;
             }
         }
     }
@@ -1206,7 +1210,9 @@ textarea {
             td {
                 vertical-align: middle;
                 line-height: 1.2;
+                border: 0 !important;
             }
+            
         }
     }
 }
@@ -1442,6 +1448,7 @@ footer {
             display: flex;
             align-items: center;
             width: 50px;
+            min-width: 50px;
             height: 50px;
             padding: 0;
             position: absolute;

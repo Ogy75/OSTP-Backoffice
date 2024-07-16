@@ -107,6 +107,7 @@ nav {
 
 .content {
   min-width: 200px;
+  min-height: 78vh;
 }
 
 .text-brown {
@@ -594,7 +595,7 @@ label {
   font-size: 1rem;
   transition: none;
   line-height: 1;
-  padding: 0rem 0.8rem 0rem 0.5rem;
+  padding: 0rem 0.8rem;
   height: 30px;
   min-width: 30px;
   border-radius: 34px !important;
@@ -978,10 +979,12 @@ textarea:focus {
 }
 
 .table thead tr th {
-  vertical-align: middle;
-  line-height: 1.1;
+  vertical-align: bottom;
+  line-height: 1.2;
   font-weight: normal;
-  white-space: nowrap;
+  font-family: "SwissText Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  border: 0;
 }
 .table tbody tr {
   cursor: pointer;
@@ -989,6 +992,7 @@ textarea:focus {
 .table tbody tr td {
   vertical-align: middle;
   line-height: 1.2;
+  border: 0 !important;
 }
 
 .modal-content {
@@ -1141,6 +1145,7 @@ footer .signoff .sa-logo {
   display: flex;
   align-items: center;
   width: 50px;
+  min-width: 50px;
   height: 50px;
   padding: 0;
   position: absolute;
