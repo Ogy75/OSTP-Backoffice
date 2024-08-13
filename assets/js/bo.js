@@ -1,4 +1,6 @@
+
 $(document).ready(function () {
+
 
     //  $('#newEmbargo').modal('show');
 
@@ -511,5 +513,12 @@ $(document).ready(function () {
         }
     });
 
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("somedate")[0].setAttribute('min', today);
+
+    var field = document.querySelector('.js_today');
+    var date = new Date();
+    field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
+        '-' + date.getDate().toString().padStart(2, 0);
 });
 

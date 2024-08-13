@@ -104,7 +104,7 @@
     </div> -->
     <!-- dialog cancel changes end -->
     <!-- edit embargo start -->
-    <div class="modal fade" id="editEmbargo" tabindex="-1" aria-labelledby="editEmbargo" aria-hidden="true" data-bs-keyboard="false">
+    <div class="modal fade" id="editEmbargo" tabindex="-1" aria-labelledby="editEmbargo" aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-lg" style="max-width: 768px;">
             <div class="modal-content">
                 <div class="modal-header pb-0">
@@ -807,8 +807,8 @@
         </div>
     </div>
     <!-- new embargo end -->
-    <!-- new agreement ver start -->
-    <div class="modal fade" id="AddDocumentVer" tabindex="-1" aria-labelledby="AddDocumentVer" aria-hidden="true">
+     <!-- new agreement ver start -->
+     <div class="modal fade" id="AddDocumentVer" tabindex="-1" aria-labelledby="AddDocumentVer" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header pb-0">
@@ -907,7 +907,7 @@
                     <div class="row">
                         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
                             <div class="col-12 my-1 airline d-flex justify-content-center">
-                                <div><span>Ver.01</span><span>BA</span><span>British Airways</span><span>United Kingdom</span></div>
+                                <div><span>Ver.01</span><span>AA</span><span>American Airlines</span><span>USA</span></div>
                             </div>
                             <div class="btn-group" role="group">
                                 <button type="button" data-tab="master" class="btn btn-tab active"><span class="material-symbols-outlined me-0 me-md-1">travel</span><span class="d-none d-md-flex">Master Data</span></button>
@@ -924,7 +924,7 @@
                 <div>
                     <div class="col-12 d-flex justify-content-between align-items-center my-4 py-3">
                         <a href="index.html" class="askSave_js d-flex align-items-center nav-link" type="button" data-bs-toggle="modal" data-bs-target="#cancelChanges"><span class="material-symbols-outlined">arrow_left</span>Agreement list</a>
-                        <h5 class="m-0">British Airways</h5>
+                        <h5 class="m-0">American Airlines</h5>
                     </div>
                     <div class="spinner">
                         <span class="loader"></span>
@@ -944,12 +944,12 @@
                                         <div class="col-6 col-sm-3">
                                             <div class="select-dropdown">
                                                 <label>Carrier Code *</label>
-                                                <button>
-                                                    <p>BA</p>
+                                                <button id="js_carrierCode">
+                                                    <p>AA</p>
                                                     <span class="material-symbols-outlined">expand_more</span>
                                                 </button>
                                                 <ul>
-                                                    <li value="1" class="active">BA</li>
+                                                    <li value="1" class="active">AA</li>
                                                     <li value="2">item 2</li>
                                                     <li value="3">item 3</li>
                                                     <li value="4">item 4</li>
@@ -964,13 +964,13 @@
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="select-dropdown">
-                                                <label>Name *</label>
+                                                <label>Carrier Name *</label>
                                                 <button>
-                                                    <p>British Airways</p>
+                                                    <p>American Airlines</p>
                                                     <span class="material-symbols-outlined">expand_more</span>
                                                 </button>
                                                 <ul>
-                                                    <li value="1" class="active">British Airways</li>
+                                                    <li value="1" class="active">American Airlines</li>
                                                     <li value="2">item 2</li>
                                                     <li value="3">item 3</li>
                                                     <li value="4">item 4</li>
@@ -987,11 +987,11 @@
                                             <div class="select-dropdown">
                                                 <label>Homeland *</label>
                                                 <button>
-                                                    <p>United Kingdom</p>
+                                                    <p>USA</p>
                                                     <span class="material-symbols-outlined">expand_more</span>
                                                 </button>
                                                 <ul>
-                                                    <li value="1" class="active">United Kingdom</li>
+                                                    <li value="1" class="active">USA</li>
                                                     <li value="2">item 2</li>
                                                     <li value="3">item 3</li>
                                                     <li value="4">item 4</li>
@@ -1023,11 +1023,11 @@
                                             <div class="select-dropdown w-100">
                                                 <label>Agreement version</label>
                                                 <button>
-                                                    <p>Ver. 01 - Valid: 01.02.2023 - indefinite</p>
+                                                    <p>Ver. 01 - Valid: <i>[SelectedDate]</i> - Indefinite</p>
                                                     <span class="material-symbols-outlined">expand_more</span>
                                                 </button>
                                                 <ul>
-                                                    <li value="1" class="active">Ver. 01 - Valid: 01.02.2023 - indefinite</li>
+                                                    <li value="1">Ver. 01 - Valid: <i></i> - Indefinite</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1060,11 +1060,11 @@
                                             <div class="select-dropdown">
                                                 <label>Inteline/ticketing type</label>
                                                 <button>
-                                                    <p>NIET - mylDTravel</p>
+                                                    <p>Select</p>
                                                     <span class="material-symbols-outlined">expand_more</span>
                                                 </button>
                                                 <ul>
-                                                    <li value="1" class="active">NIET - mylDTravel NIET - mylDTravel</li>
+                                                    <li value="1">NIET - mylDTravel NIET - mylDTravel</li>
                                                     <li value="2">item 2</li>
                                                     <li value="3">item 3</li>
                                                     <li value="4">item 4</li>
@@ -1103,11 +1103,11 @@
                                             <div class="select-dropdown">
                                                 <label>Inteline/ticketing type</label>
                                                 <button>
-                                                    <p>NIET - mylDTravel</p>
+                                                    <p>Select</p>
                                                     <span class="material-symbols-outlined">expand_more</span>
                                                 </button>
                                                 <ul>
-                                                    <li value="1" class="active">NIET - mylDTravel</li>
+                                                    <li value="1">NIET - mylDTravel</li>
                                                     <li value="2">item 2</li>
                                                     <li value="3">item 3</li>
                                                     <li value="4">item 4</li>
@@ -1148,11 +1148,11 @@
                                                     <div class="select-dropdown">
                                                         <label>Inteline/ticketing type</label>
                                                         <button>
-                                                            <p>NIET - mylDTravel</p>
+                                                            <p>Select</p>
                                                             <span class="material-symbols-outlined">expand_more</span>
                                                         </button>
                                                         <ul>
-                                                            <li value="1" class="active">NIET - mylDTravel</li>
+                                                            <li value="1">NIET - mylDTravel</li>
                                                             <li value="2">item 2</li>
                                                             <li value="3">item 3</li>
                                                             <li value="4">item 4</li>
@@ -1178,13 +1178,13 @@
                                             <h4 class="m-0">Categories Private</h4>
                                         </div>
                                         <div class="d-flex flex-wrap gap-3">
-                                            <label class="check">B <input type="checkbox" checked>
+                                            <label class="check">B <input type="checkbox">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="check">C <input type="checkbox">
                                                 <span class="checkmark"></span>
                                             </label>
-                                            <label class="check">D <input type="checkbox" checked>
+                                            <label class="check">D <input type="checkbox">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="check">E <input type="checkbox">
@@ -1211,13 +1211,13 @@
                                             <h4 class="m-0">Categories Duty</h4>
                                         </div>
                                         <div class="d-flex flex-wrap gap-3">
-                                            <label class="check">B <input type="checkbox" checked>
+                                            <label class="check">B <input type="checkbox">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="check">C <input type="checkbox">
                                                 <span class="checkmark"></span>
                                             </label>
-                                            <label class="check">D <input type="checkbox" checked>
+                                            <label class="check">D <input type="checkbox">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="check">E <input type="checkbox">
@@ -1246,7 +1246,7 @@
                                         <div class="col-6">
                                             <div class="input-form">
                                                 <label>Child Max. Age</label>
-                                                <input type="number" class="form-control" value="25" />
+                                                <input type="number" class="form-control" value="" />
                                             </div>
                                         </div>
                                     </div>
@@ -1262,7 +1262,7 @@
                                         <div class="col-6 col-md-4 col-xl-4 mb-3">
                                             <div class="input-form">
                                                 <label>No. of STP</label>
-                                                <input type="number" class="form-control" value="2" />
+                                                <input type="number" class="form-control" value="" />
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-8 col-xl-8 mb-3">
@@ -3813,7 +3813,7 @@
                                 <h3 class="d-flex align-items-center m-0"><span class="material-symbols-outlined text-red me-2">stop_circle</span>Embargos</h3>
                                 <span class="d-flex align-items-center nav-link" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#newEmbargo"><span class="material-symbols-outlined me-1">add</span>New Embargo</span>
                             </div>
-                            <div class="col-12 col-sm-6 col-lg-12 embargo-item">
+                            <!-- <div class="col-12 col-sm-6 col-lg-12 embargo-item">
                                 <div class="block" role="button" data-bs-toggle="modal" data-bs-target="#editEmbargo">
                                     <div class="data-column">
                                         <div class="data-row">
@@ -3972,8 +3972,8 @@
                                         <button class="btn-remove deleteEmbargo_js" type="button" data-bs-toggle="modal" data-bs-target="#dialogDelete"><span class="material-symbols-outlined">close</span></button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="no-result col-12">
+                            </div> -->
+                            <div class="no-result col-12 d-flex">
                                 <p>No Embargos added</p>
                             </div>
                         </div>
@@ -3994,7 +3994,7 @@
                     </a>
                     <span class="d-flex gap-2">
                         <button class="btn btn-tab cancelChanges">Close</button>
-                        <button type="button" class="btn btn-primary saveConfirm">Save</button>
+                        <button type="button" class="btn btn-primary">Save</button>
                     </span>
                 </div>
             </div>
@@ -4011,9 +4011,6 @@
             </footer>
         </div>
     </div>
-    <script>
-        document.getElementsByClassName("js_today").valueAsDate = new Date();
-    </script>
 </body>
 
 </html>

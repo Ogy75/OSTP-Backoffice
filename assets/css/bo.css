@@ -577,6 +577,10 @@ label {
   border-color: #d7d7d7 !important;
 }
 
+button:disabled {
+  opacity: 0.4;
+}
+
 .btn-group {
   display: inline-flex;
   align-items: center;
@@ -736,6 +740,7 @@ label {
   background-color: #f8f8f8;
   color: #c3c3c3;
   cursor: not-allowed;
+  opacity: 1 !important;
 }
 .select-dropdown span {
   display: flex;
@@ -807,6 +812,9 @@ label {
   vertical-align: middle;
   text-align: center;
   padding: 30px 0;
+}
+.select-dropdown i {
+  font-style: normal;
 }
 
 .item-list {
